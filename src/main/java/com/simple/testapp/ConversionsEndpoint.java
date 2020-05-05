@@ -12,11 +12,11 @@ public class ConversionsEndpoint {
         return celcius + KELVIN_FREEZE_TEMP;
     }
 
-    public static String milesToKilometers(final double kilometers) {
-        return
+    public static double milesToKilometers(final double miles) {
+        return miles / MILE_TO_KM;
     }
 
-    public static String kilometersToMiles(final double miles) {
-
+    public static double kilometersToMiles(final double kilometers) {
+        return kilometers * MILE_TO_KM;
     }
 }
