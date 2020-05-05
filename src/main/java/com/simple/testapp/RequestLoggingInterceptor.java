@@ -22,6 +22,7 @@ public class RequestLoggingInterceptor extends HandlerInterceptorAdapter {
     @Override
     public void afterCompletion(final HttpServletRequest req, final HttpServletResponse res, final Object handler, final Exception exception) {
         // get time diff
-        System.out.println("Timer testing " + req.getAttribute(START_TIMER_ATTRIB));
+        long timeDiff = Instant.now().toEpochMilli() - (Long) req.getAttribute(START_TIMER_ATTRIB);
+        System.out.println("Total runtime: " + timeDiff + " miliseconds");
     }
 }

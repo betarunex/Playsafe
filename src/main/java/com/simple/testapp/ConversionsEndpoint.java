@@ -20,11 +20,11 @@ public class ConversionsEndpoint  {
 
     @RequestMapping("/mtok")
     public double milesToKilometers(final double miles) {
-        return miles / MILE_TO_KM;
+        return miles * MILE_TO_KM;
     }
 
     @RequestMapping("/ktom")
     public double kilometersToMiles(final double kilometers) {
-        return kilometers * MILE_TO_KM;
+        return kilometers / MILE_TO_KM;
     }
 }
