@@ -1,9 +1,9 @@
 
-##Java Developer
+Java Developer
 
 Game Studio Java Developer
 
-#Java Developer Expertise Test (60 min)
+Java Developer Expertise Test (60 min)
 
 Part 1
 
