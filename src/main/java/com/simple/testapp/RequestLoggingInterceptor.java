@@ -1,5 +1,7 @@
 package com.simple.testapp;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -10,19 +12,18 @@ import java.time.Instant;
 @Component
 public class RequestLoggingInterceptor extends HandlerInterceptorAdapter {
 
+    private static final Logger logger = LoggerFactory.getLogger(RequestLoggingInterceptor.class);
     private static final String START_TIMER_ATTRIB = "startTimer";
 
     @Override
     public boolean preHandle(final HttpServletRequest req, final HttpServletResponse res, final Object handler) {
-        // start timer
         req.setAttribute(START_TIMER_ATTRIB, Instant.now().toEpochMilli());
         return true;
     }
 
     @Override
     public void afterCompletion(final HttpServletRequest req, final HttpServletResponse res, final Object handler, final Exception exception) {
-        // get time diff
         long timeDiff = Instant.now().toEpochMilli() - (Long) req.getAttribute(START_TIMER_ATTRIB);
-        System.out.println("Total runtime: " + timeDiff + " miliseconds");
+        logger.info("Total runtime: " + timeDiff + " miliseconds");
     }
 }
